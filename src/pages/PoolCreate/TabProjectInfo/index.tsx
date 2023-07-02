@@ -31,6 +31,7 @@ import ClaimNetwork from "../Components/ClaimNetwork";
 import { useMemo } from "react";
 import ProgressDisplaySetting from "../Components/ProgressDisplaySetting/ProgressDisplaySetting";
 import DepositRefundBalance from "../Components/DepositRefundBalance/DepositBalance";
+import WithdrawRemainingToken from "../Components/WithdrawRemainingToken";
 
 const TabProjectInfo = (props: any) => {
   const classes = useStyles();
@@ -269,6 +270,11 @@ const TabProjectInfo = (props: any) => {
               errors={errors}
               control={control}
               watch={watch}
+            />
+          )}
+          {isDeployed && (
+            <WithdrawRemainingToken
+              poolDetail={poolDetail}
             />
           )}
           {/* {isDeployed && (
