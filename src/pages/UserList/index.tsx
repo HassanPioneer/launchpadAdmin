@@ -16,13 +16,16 @@ import DefaultLayout from "../../components/Layout/DefaultLayout";
 import UserRow from "./UserRow";
 import SearchForm from "./SearchForm";
 import { alertFailure, alertSuccess } from "../../store/actions/alert";
-import { getUserList, reloadCachedUserList, exportUserList } from "../../request/user";
+import { getUserList, reloadCachedUserList, exportUserList, wipeAllBonuses } from "../../request/user";
+
 import { MenuItem, Select } from "@material-ui/core";
 import { TIERS_LABEL } from "../../constants";
+import SetBonusForm from "./SetBonusForm";
 
 const tableHeaders = [
   "WALLET",
   "TOTAL",
+  "BONUS",
   "TIER",
   "EMAIL",
   "TELEGRAM",
@@ -41,6 +44,7 @@ const UserList: React.FC<any> = (props: any) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [failure, setFailure] = useState(false);
+  const [isOpenBonusModal, setIsOpenBonusModal] = useState(false);
 
   const getUserListInfo = async (query: any) => {
     const queryParams: any = {
@@ -101,6 +105,23 @@ const UserList: React.FC<any> = (props: any) => {
     }
   };
 
+  const handleWipeAllBonuses = async () => {
+    try {
+      if (!window.confirm("Are you sure?")) {
+        return;
+      }
+      const res = await wipeAllBonuses();
+      if (res.status !== 200) {
+        dispatch(alertFailure('Something wrong'))
+        return
+      }
+      await getUserListInfo('')
+      dispatch(alertSuccess("Wiped all bonuses"));
+    } catch (err: any) {
+      dispatch(alertFailure("Reload failed!"));
+    }
+  };
+
   return (
     <DefaultLayout>
       <div className={classes.header}>
@@ -111,6 +132,20 @@ const UserList: React.FC<any> = (props: any) => {
             onClick={exportUserList}
           >
             Export to CSV
+          </button>
+          <button
+            className={classes.exportBtn}
+            style={{ color: "#000", marginLeft: "10px" }}
+            onClick={() => setIsOpenBonusModal(true)}
+          >
+            Set bonus
+          </button>
+          <button
+            className={classes.exportBtn}
+            style={{ color: "#000", marginLeft: "10px" }}
+            onClick={() => handleWipeAllBonuses()}
+          >
+            Wipe all bonuses
           </button>
           {/* <button
             className={classes.exportBtn}
@@ -177,6 +212,11 @@ const UserList: React.FC<any> = (props: any) => {
           </>
         )}
       </TableContainer>
+      <SetBonusForm
+        isOpen={isOpenBonusModal}
+        setIsOpen={setIsOpenBonusModal}
+        getUserListInfo={getUserListInfo}
+      />
       {/* <FileExport /> */}
     </DefaultLayout>
   );

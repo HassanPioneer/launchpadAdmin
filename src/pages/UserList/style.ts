@@ -1,6 +1,31 @@
 import { makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles(theme => ({
+
+  formControl: {
+    marginBottom: 20,
+    position: 'relative',
+  },
+  formControlLabel: {
+    fontSize: 14,
+    letterSpacing: '0.25px',
+    color: '#363636'
+  },
+  formControlInput: {
+    display: 'block',
+    border: '1px solid #DFDFDF',
+    width: '100%',
+    padding: '13px',
+    borderRadius: 5,
+    marginTop: 5,
+    backgroundColor: 'white',
+    transition: '.1s all ease-in',
+
+    '&:focus': {
+      borderColor: '#FFCC00',
+      outline: 'none'
+    }
+  },
   header: {
     display: 'flex',
     justifyContent: 'space-between'
@@ -8,7 +33,7 @@ const useStyles = makeStyles(theme => ({
   headerRight: {
     display: 'flex',
   },
-  tableContainer: { 
+  tableContainer: {
     padding: '30px 20px',
     borderRadius: 10,
     boxShadow: 'none',
@@ -81,7 +106,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'space-between',
   },
   refreshCampaignsContainer: {
-    display: 'flex', 
+    display: 'flex',
     cursor: 'pointer',
     alignItems: 'center',
 

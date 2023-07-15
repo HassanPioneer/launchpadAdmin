@@ -81,6 +81,10 @@ const UserRecord: React.FC<UserRowProps> = (props: UserRowProps) => {
         </TableCell>
 
         <TableCell className={classes.tableCell} align="left">
+          <strong>{user.bonus_point}</strong>
+        </TableCell>
+
+        <TableCell className={classes.tableCell} align="left">
           {stringifyTier(user.tier)}
         </TableCell>
 
