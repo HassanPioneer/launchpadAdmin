@@ -4,35 +4,18 @@ import DefaultLayout from '../../components/Layout/DefaultLayout';
 import {adminRoute} from "../../utils";
 import PoolForm from "./PoolForm";
 import {getPoolDetail} from "../../request/staking-pool";
-import moment from "moment";
-import {DATETIME_FORMAT} from "../../constants";
 import BackButton from "../../components/Base/ButtonLink/BackButton";
-import {useDispatch, useSelector} from "react-redux";
-import {get} from 'lodash';
-import {getPoolBlockchainInfo} from "../../utils/blockchain";
+import {useDispatch} from "react-redux";
 import {alertFailure} from "../../store/actions/alert";
 
 const PoolEdit: React.FC<RouteComponentProps> = (props: RouteComponentProps) => {
   const isEdit = true;
   const { match } = props;
   const dispatch = useDispatch();
-  const { data: loginUser } = useSelector((state: any) => state.user);
   const [poolDetail, setPoolDetail] = useState();
 
   // @ts-ignore
   const id = match.params?.id;
-
-  const getPoolInfoInBlockchain = async (data: any) => {
-    if (!get(poolDetail, 'is_deploy')) {
-      return;
-    }
-    try {
-      const response = await getPoolBlockchainInfo(loginUser, data);
-      console.log('getPoolBlockchainInfo: ', response);
-    } catch (e) {
-      console.log('ERROR: ', e);
-    }
-  };
 
   useEffect(() => {
     getPoolDetail(id)

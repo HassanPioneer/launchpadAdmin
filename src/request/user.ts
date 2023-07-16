@@ -35,6 +35,26 @@ export const reloadCachedUserList = async () => {
   return resObject;
 };
 
+export const setBonusPointUser = async (param: {walletAddress: string, bonusPoint: number}) => {
+  const baseRequest = new BaseRequest();
+  let url = `/admin/users/bonus`;
+
+  const response = await baseRequest.put(url, {wallet_address: param.walletAddress, bonus_point: param.bonusPoint}) as any;
+  const resObject = await response.json();
+
+  return resObject;
+};
+
+export const wipeAllBonuses = async () => {
+  const baseRequest = new BaseRequest();
+  let url = `/admin/users/bonuses`;
+
+  const response = await baseRequest.delete(url, {}) as any;
+  const resObject = await response.json();
+
+  return resObject;
+};
+
 export const downloadUserList = async (fileId: number, fileName: string) => {
   const baseRequest = new BaseRequest();
   let url = apiRoute(`/users/download/${fileId}`);

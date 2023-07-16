@@ -85,7 +85,7 @@ const useGetRefundBalance = (props: any) => {
             if (!poolContract) throw new Error('contract not found')
 
             const [refundCurrency, totalRefundToken, contractBalance] = await Promise.all([
-                poolContract.methods.refundCurrency().call(),
+                poolContract.methods.refundCurrency(currencyAddress).call(),
                 poolContract.methods.getTotalRefundToken(currencyAddress).call(),
                 currencyAddress == NATIVE_TOKEN_ADDRESS ? getETHBalance(poolDetail.campaign_hash) : erc20Contract?.methods.balanceOf(poolDetail.campaign_hash).call()
             ])

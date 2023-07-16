@@ -51,12 +51,6 @@
   {
     "anonymous": false,
     "inputs": [],
-    "name": "Pause",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [],
     "name": "PoolStatsChanged",
     "type": "event"
   },
@@ -156,7 +150,7 @@
         "type": "uint256"
       }
     ],
-    "name": "RefundedIcoCurrency",
+    "name": "RefundedIDOCurrency",
     "type": "event"
   },
   {
@@ -175,7 +169,7 @@
         "type": "uint256"
       }
     ],
-    "name": "RefundedIcoToken",
+    "name": "RefundedIDOToken",
     "type": "event"
   },
   {
@@ -216,13 +210,7 @@
       {
         "indexed": true,
         "internalType": "address",
-        "name": "purchaser",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "beneficiary",
+        "name": "candidate",
         "type": "address"
       },
       {
@@ -247,13 +235,7 @@
       {
         "indexed": true,
         "internalType": "address",
-        "name": "purchaser",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "beneficiary",
+        "name": "candidate",
         "type": "address"
       },
       {
@@ -279,35 +261,11 @@
     "type": "event"
   },
   {
-    "anonymous": false,
-    "inputs": [],
-    "name": "Unpause",
-    "type": "event"
-  },
-  {
-    "stateMutability": "nonpayable",
+    "stateMutability": "payable",
     "type": "fallback"
   },
   {
-    "inputs": [],
-    "name": "allowChangePurchasedState",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
     "inputs": [
-      {
-        "internalType": "address",
-        "name": "_beneficiary",
-        "type": "address"
-      },
       {
         "internalType": "address",
         "name": "_candidate",
@@ -338,12 +296,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_beneficiary",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_token",
+        "name": "_currency",
         "type": "address"
       },
       {
@@ -438,20 +391,26 @@
   },
   {
     "inputs": [],
-    "name": "claimable",
+    "name": "closeTime",
     "outputs": [
       {
-        "internalType": "bool",
+        "internalType": "uint256",
         "name": "",
-        "type": "bool"
+        "type": "uint256"
       }
     ],
     "stateMutability": "view",
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "closeTime",
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "currencyRaised",
     "outputs": [
       {
         "internalType": "uint256",
@@ -505,103 +464,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_candidate",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "getClaimMessageHash",
-    "outputs": [
-      {
-        "internalType": "bytes32",
-        "name": "",
-        "type": "bytes32"
-      }
-    ],
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_candidate",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
         "name": "_currency",
-        "type": "address"
-      }
-    ],
-    "name": "getClaimRefundMessageHash",
-    "outputs": [
-      {
-        "internalType": "bytes32",
-        "name": "",
-        "type": "bytes32"
-      }
-    ],
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes32",
-        "name": "_messageHash",
-        "type": "bytes32"
-      }
-    ],
-    "name": "getEthSignedMessageHash",
-    "outputs": [
-      {
-        "internalType": "bytes32",
-        "name": "",
-        "type": "bytes32"
-      }
-    ],
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_candidate",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_maxAmount",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_minAmount",
-        "type": "uint256"
-      }
-    ],
-    "name": "getMessageHash",
-    "outputs": [
-      {
-        "internalType": "bytes32",
-        "name": "",
-        "type": "bytes32"
-      }
-    ],
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_token",
         "type": "address"
       }
     ],
@@ -620,7 +483,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_token",
+        "name": "_currency",
         "type": "address"
       }
     ],
@@ -639,60 +502,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_candidate",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
         "name": "_currency",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_deadline",
-        "type": "uint256"
-      }
-    ],
-    "name": "getRefundMessageHash",
-    "outputs": [
-      {
-        "internalType": "bytes32",
-        "name": "",
-        "type": "bytes32"
-      }
-    ],
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes32",
-        "name": "_messageHash",
-        "type": "bytes32"
-      },
-      {
-        "internalType": "bytes",
-        "name": "_signature",
-        "type": "bytes"
-      }
-    ],
-    "name": "getSignerAddress",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "signer",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_token",
         "type": "address"
       }
     ],
@@ -843,27 +653,13 @@
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "pause",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "paused",
-    "outputs": [
+    "inputs": [
       {
-        "internalType": "bool",
+        "internalType": "address",
         "name": "",
-        "type": "bool"
+        "type": "address"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
     "name": "refundCurrency",
     "outputs": [
       {
@@ -935,27 +731,8 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "bool",
-        "name": "_isAllow",
-        "type": "bool"
-      }
-    ],
-    "name": "setAllowChangePurchasedState",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bool",
-        "name": "_isAllow",
-        "type": "bool"
-      }
-    ],
-    "name": "setClaimable",
+    "inputs": [],
+    "name": "renounceOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -990,7 +767,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_token",
+        "name": "_currency",
         "type": "address"
       },
       {
@@ -1008,7 +785,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_token",
+        "name": "_currency",
         "type": "address"
       },
       {
@@ -1026,7 +803,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_token",
+        "name": "_currency",
         "type": "address"
       },
       {
@@ -1059,42 +836,6 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "bool",
-        "name": "_whitelist",
-        "type": "bool"
-      }
-    ],
-    "name": "setPoolExtentions",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_token",
-        "type": "address"
-      },
-      {
-        "internalType": "address[]",
-        "name": "_candidates",
-        "type": "address[]"
-      },
-      {
-        "internalType": "uint256[]",
-        "name": "_amounts",
-        "type": "uint256[]"
-      }
-    ],
-    "name": "setPurchasingState",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [],
     "name": "signer",
     "outputs": [
@@ -1105,35 +846,6 @@
       }
     ],
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "_signature",
-        "type": "bytes"
-      }
-    ],
-    "name": "splitSignature",
-    "outputs": [
-      {
-        "internalType": "bytes32",
-        "name": "r",
-        "type": "bytes32"
-      },
-      {
-        "internalType": "bytes32",
-        "name": "s",
-        "type": "bytes32"
-      },
-      {
-        "internalType": "uint8",
-        "name": "v",
-        "type": "uint8"
-      }
-    ],
-    "stateMutability": "pure",
     "type": "function"
   },
   {
@@ -1163,7 +875,13 @@
     "type": "function"
   },
   {
-    "inputs": [],
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "name": "totalRefundCurrency",
     "outputs": [
       {
@@ -1192,33 +910,13 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_newOwner",
+        "name": "newOwner",
         "type": "address"
       }
     ],
     "name": "transferOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "unpause",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "useWhitelist",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -1283,165 +981,6 @@
         "internalType": "bool",
         "name": "isClaimed",
         "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_signer",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_candidate",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_maxAmount",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_minAmount",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bytes",
-        "name": "signature",
-        "type": "bytes"
-      }
-    ],
-    "name": "verify",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_signer",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_candidate",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_currency",
-        "type": "address"
-      },
-      {
-        "internalType": "bytes",
-        "name": "signature",
-        "type": "bytes"
-      }
-    ],
-    "name": "verifyClaimRefundToken",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_signer",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_candidate",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bytes",
-        "name": "signature",
-        "type": "bytes"
-      }
-    ],
-    "name": "verifyClaimToken",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_signer",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_candidate",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_currency",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_deadline",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bytes",
-        "name": "signature",
-        "type": "bytes"
-      }
-    ],
-    "name": "verifyRefundToken",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "pure",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "weiRaised",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
       }
     ],
     "stateMutability": "view",
