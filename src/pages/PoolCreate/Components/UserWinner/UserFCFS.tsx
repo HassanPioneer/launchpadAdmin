@@ -75,7 +75,7 @@ function UserFCFS(props: any) {
                     <TableHead>
                         <TableRow>
                             <TableCell align="center">Wallet Address</TableCell>
-                            <TableCell align="center">Ticket</TableCell>
+                            <TableCell align="center">FCFS Ticket</TableCell>
                             <TableCell align="center">Snapshot Points</TableCell>
                             <TableCell align="center">Level</TableCell>
                             <TableCell align="center">Min Buy</TableCell>
@@ -93,7 +93,7 @@ function UserFCFS(props: any) {
                                 </TableCell>
 
                                 <TableCell align="center" component="th" scope="row">
-                                    {row.lottery_ticket || 0}
+                                    {row.fcfs_ticket || 0}
                                 </TableCell>
                                 <TableCell align="center" component="th" scope="row">
                                     {row.total_points}
