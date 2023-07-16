@@ -24,9 +24,9 @@ function UserFCFS(props: any) {
     const { poolDetail } = props;
     const {
         rows,
-        search, searchDelay,
+        searchDelay,
         failure, loading,
-        lastPage, currentPage, totalRecords,
+        lastPage, currentPage,
         handlePaginationChange,
         status,
         setStatus
