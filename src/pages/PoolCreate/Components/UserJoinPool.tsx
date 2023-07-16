@@ -4,6 +4,7 @@ import { Button } from "@material-ui/core";
 import useStyles from "../style";
 import UserParticipant from "./UserWinner/UserParticipant";
 import UserWinner from "./UserWinner/UserWinner";
+import UserFCFS from "./UserWinner/UserFCFS";
 
 import {Tabs} from 'antd';
 import UserBuyer from "./UserWinner/UserBuyer";
@@ -56,6 +57,10 @@ const UserJoinPool = (props: any) => {
             />
           </div>
           <UserWinner poolDetail={poolDetail} />
+
+        </TabPane>
+        <TabPane tab="FCFS Allocation" key="3">
+          <UserFCFS poolDetail={poolDetail} />
 
         </TabPane>
         {/* <TabPane tab="Buyer" key="3">

@@ -208,25 +208,27 @@ function UserParticipant(props: any) {
         <Table className={classesTable.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell size={'small'}>
+              {/* <TableCell size={'small'}>
                 <Checkbox indeterminate={indeterminate} onChange={onCheckAllChange} checked={checkAll}>
                   Check all
                 </Checkbox>
-              </TableCell>
+              </TableCell> */}
               <TableCell size={'small'}>Email</TableCell>
               <TableCell align="center" size={'medium'}>Wallet Address</TableCell>
-              <TableCell align="right">Whitelist Submission</TableCell>
+              <TableCell align="center">Tier</TableCell>
+              <TableCell align="center">Cached Points</TableCell>
+              {/* <TableCell align="right">Whitelist Submission</TableCell> */}
             </TableRow>
           </TableHead>
           <TableBody>
             {rows.map((row: any, index: number) => (
               <TableRow key={row.id}>
-                <TableCell size={'small'}>
+                {/* <TableCell size={'small'}>
                   <Checkbox
                     onChange={(e) => onCheckToAdd(e, row, index)}
                     checked={includes(addedUsers, row.wallet_address)}
                   ></Checkbox>
-                </TableCell>
+                </TableCell> */}
 
                 <TableCell component="th" scope="row" size={'small'}>{row.email}</TableCell>
                 <TableCell align="center" size={'medium'}>
@@ -234,7 +236,13 @@ function UserParticipant(props: any) {
                     {row.wallet_address}
                   </Link>
                 </TableCell>
-                <TableCell component="th" scope="row" size={'small'} align="right">
+                <TableCell align="center">
+                    {row.tier}
+                </TableCell>
+                <TableCell align="center">
+                    {row.total_point}
+                </TableCell>
+                {/* <TableCell component="th" scope="row" size={'small'} align="right">
                   <Button
                     variant="contained"
                     color="primary"
@@ -242,7 +250,7 @@ function UserParticipant(props: any) {
                     style={{marginLeft: 10, marginTop: 10, backgroundColor: row.whitelistStatus === 'Completed' ? '#4caf50' : '#3f51b5'}}
                   >{row.whitelistStatus}</Button>
 
-                </TableCell>
+                </TableCell> */}
 
                 {/*<TableCell align="right">*/}
                 {/*  <Button*/}
