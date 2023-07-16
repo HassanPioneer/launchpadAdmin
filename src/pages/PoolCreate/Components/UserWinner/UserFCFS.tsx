@@ -106,7 +106,7 @@ function UserFCFS(props: any) {
                                     {minBuyTiersMapping[row.level || 0]}
                                 </TableCell>
                                 <TableCell align="center" component="th" scope="row">
-                                    {new BigNumber(maxBuyTiersMapping[row.level || 0]).multipliedBy(row.lottery_ticket || 0).toFixed(2)}
+                                    {new BigNumber(maxBuyTiersMapping[row.level || 0]).multipliedBy(row.fcfs_ticket || 0).toFixed(2)}
                                 </TableCell>
 
                             </TableRow>
