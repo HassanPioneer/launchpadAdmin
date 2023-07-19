@@ -9,7 +9,7 @@ import ExchangeRateUSDTDisplay from "./ExchangeRateUSDTDisplay";
 function ExchangeRate(props: any) {
   const classes = useStyles();
   const commonStyle = useCommonStyle();
-  const { register, setValue, errors, control, watch, poolDetail, token } =
+  const { register, setValue, errors, control, watch, poolDetail, token, needValidate } =
     props;
 
   const acceptCurrency = watch("acceptCurrency");
@@ -36,6 +36,7 @@ function ExchangeRate(props: any) {
         errors={errors}
         control={control}
         watch={watch}
+        needValidate={needValidate}
       />
 
       {acceptCurrency == ACCEPT_CURRENCY.ETH && (

@@ -11,7 +11,7 @@ function ExchangeRateETH(props: any) {
   const classes = useStyles();
   const commonStyle = useCommonStyle();
   const {
-    register, setValue, errors, control, watch,
+    register, setValue, errors, control, watch, needValidate,
     poolDetail,
     token
   } = props;
@@ -109,7 +109,10 @@ function ExchangeRateETH(props: any) {
               ref={register({
                 required: true,
                 validate: {
-                  min: (value: any) => new BigNumber(value).comparedTo(0) > 0,
+                  min: (val: any) => {
+                    if (!needValidate) return true
+                    return new BigNumber(val).comparedTo(0) > 0
+                  }
                   // maxDecimals: checkMaxEthRateDecimals
                 }
               })}

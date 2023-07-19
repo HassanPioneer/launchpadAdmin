@@ -188,6 +188,7 @@ const TabProjectInfo = (props: any) => {
             errors={errors}
             control={control}
             watch={watch}
+            needValidate={needValidate}
           />
         </Grid>
       </Grid>
