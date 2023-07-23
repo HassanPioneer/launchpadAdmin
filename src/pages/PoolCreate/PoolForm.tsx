@@ -128,6 +128,7 @@ function PoolForm(props: any) {
       token: data.token,
       token_images: data.tokenImages,
       total_sold_coin: data.totalSoldCoin,
+      coingecko_id: data.coingeckoId,
 
       token_by_eth: data.tokenRate,
       token_conversion_rate: data.tokenRate,
@@ -295,6 +296,7 @@ function PoolForm(props: any) {
       // Token
       token_images: data.tokenImages,
       total_sold_coin: data.totalSoldCoin,
+      coingecko_id: data.coingeckoId,
 
       // KYC required
       kyc_bypass: data.kyc_bypass,
@@ -475,6 +477,7 @@ function PoolForm(props: any) {
         token: data.token,
         token_images: data.tokenImages,
         total_sold_coin: data.totalSoldCoin,
+        coingecko_id: data.coingeckoId,
 
         // Rate
         token_by_eth: data.tokenRate,

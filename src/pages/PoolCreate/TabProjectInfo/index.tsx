@@ -23,6 +23,8 @@ import PrivatePoolSetting from "../Components/PrivatePoolSetting";
 import SocialSetting from "../Components/SocialSetting/SocialSetting";
 import TokenAddress from "../Components/TokenAddress";
 import TokenLogo from "../Components/TokenLogo";
+import TokenCoingeckoId from "../Components/TokenCoingeckoId";
+
 import TokenSymbol from "../Components/TokenSymbol";
 import TotalCoinSold from "../Components/TotalCoinSold";
 import GleamRequirement from "../Components/WhitelistSocialRequirement/GleamRequirement";
@@ -130,6 +132,12 @@ const TabProjectInfo = (props: any) => {
           />
 
           <TokenLogo
+            poolDetail={poolDetail}
+            register={register}
+            errors={errors}
+          />
+
+          <TokenCoingeckoId
             poolDetail={poolDetail}
             register={register}
             errors={errors}
