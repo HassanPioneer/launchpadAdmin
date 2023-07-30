@@ -27,15 +27,14 @@ function PoolDescription(props: any) {
       <div className={classes.formCKEditor}>
         <label className={classes.formControlLabel}>About the pool: </label>
 
-        <CKEditor
-          data={description}
-          onChange={ evt => {
-              const data = evt.editor.getData();
-              setDescription(data);
-          }}
-          readOnly={isDeployed}
-        />
-
+<CKEditor
+  data={description}
+  onChange={evt => {
+    const data = evt;
+    setDescription(data);
+  }}
+  readOnly={isDeployed}
+/>
         <input
           type="hidden"
           value={description}
