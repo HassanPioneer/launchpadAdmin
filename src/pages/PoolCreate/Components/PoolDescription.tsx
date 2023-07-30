@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import useStyles from "../style";
-import CKEditor from 'ckeditor4-react';
+import * as CKEditorModule from 'ckeditor4-react';
 import {renderErrorCreatePool} from "../../../utils/validate";
 
 function PoolDescription(props: any) {
