@@ -3,7 +3,6 @@ import useStyles from "../style";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import {renderErrorCreatePool} from "../../../utils/validate";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 // CSS in /src/index.css
 
@@ -24,6 +23,7 @@ function PoolDescription(props: any) {
       setDescription(poolDetail.description);
     }
   }, [poolDetail]);
+
   const isDeployed = !!poolDetail?.is_deploy;
 
   return (
@@ -32,46 +32,24 @@ function PoolDescription(props: any) {
         <label className={classes.formControlLabel}>About the pool: </label>
 
         <CKEditor
-  editor={ ClassicEditor }
-  data={description}
-  onReady={ (editor: any) => {
-    // You can store the "editor" and use when it is needed.
-    // console.log( 'Editor is ready to use!', editor );
-  } }
-  onChange={ ( event: any, editor: any ) => {
-    const data = editor.getData();
-    setDescription(data);
-    setValue('description', data);  // save the value from the editor into the form
-  } }
-  onBlur={ ( event: any, editor: any ) => {
-    // console.log( 'Blur.', editor );
-  } }
-  onFocus={ ( event: any, editor: any ) => {
-    // console.log( 'Focus.', editor );
-  } }
-  // disabled={isDeployed}
-/>
-<input
-  type="hidden"
-  value={description}
-  name="description"
-  ref={register({
-    // required: true
-  })}
-/>
-
-        
-
-        <textarea
-          value={description}
-          name="description"
-          ref={register({
-          })}
-          onChange={e => setDescription(e?.target?.value)}
-          className={classes.formControlInput}
-          rows={10}
-          cols={50}
-          // maxLength={1000}
+          editor={ ClassicEditor }
+          data={description}
+          onReady={ (editor: any) => {
+            // You can store the "editor" and use when it is needed.
+            // console.log( 'Editor is ready to use!', editor );
+          } }
+          onChange={ ( event: any, editor: any ) => {
+            const data = editor.getData();
+            setDescription(data);
+            setValue('description', data);  // save the value from the editor into the form
+          } }
+          onBlur={ ( event: any, editor: any ) => {
+            // console.log( 'Blur.', editor );
+          } }
+          onFocus={ ( event: any, editor: any ) => {
+            // console.log( 'Focus.', editor );
+          } }
+          // disabled={isDeployed}
         />
 
         <p className={classes.formErrorMessage}>
