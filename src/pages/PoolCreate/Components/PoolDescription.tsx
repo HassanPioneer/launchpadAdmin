@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import useStyles from "../style";
-// @ts-ignore
 import { CKEditor } from '@ckeditor/ckeditor5-react';
-// @ts-ignore
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import {renderErrorCreatePool} from "../../../utils/validate";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
