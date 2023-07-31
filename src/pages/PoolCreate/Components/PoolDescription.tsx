@@ -34,6 +34,12 @@ function PoolDescription(props: any) {
 <CKEditor
   editor={ ClassicEditor }
   data={description}
+  config={{
+    mediaEmbed: {
+        previewsInData: true
+    }
+  }}
+
   onReady={ (editor: any) => {
     // You can store the "editor" and use when it is needed.
     // console.log( 'Editor is ready to use!', editor );
