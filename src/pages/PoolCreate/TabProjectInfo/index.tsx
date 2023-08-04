@@ -349,6 +349,7 @@ const TabProjectInfo = (props: any) => {
               register={register}
               setValue={setValue}
               errors={errors}
+              control={control}
             />
           </div>
         </Grid>
