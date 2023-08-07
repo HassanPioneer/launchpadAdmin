@@ -60,7 +60,7 @@ function WithdrawButton(props: any) {
         onClick={withdrawRefundBalance}
         disabled={disabled || disableButton}
       >
-        Withdraw Refund Balance
+        Withdraw All Refunding Amount
       </Button>
 
       {loading && <div>Loading....</div>}

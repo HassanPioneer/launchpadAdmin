@@ -40,7 +40,7 @@ function WithdrawRefundBalance(props: any) {
 
   return (
     <>
-      <div className={classes.formControl}>
+      <div className={classes.formControl} style={{marginTop: 20}}>
         <WithdrawButton
           poolDetail={poolDetail}
           currencyAddress={currencyAddress}

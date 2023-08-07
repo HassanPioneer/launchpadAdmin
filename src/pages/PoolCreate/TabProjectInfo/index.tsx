@@ -34,6 +34,7 @@ import { useMemo } from "react";
 import ProgressDisplaySetting from "../Components/ProgressDisplaySetting/ProgressDisplaySetting";
 import DepositRefundBalance from "../Components/DepositRefundBalance/DepositBalance";
 import WithdrawRemainingToken from "../Components/WithdrawRemainingToken";
+import WithdrawRefundBalance from "../Components/WithdrawRefundBalance/WithdrawBalance";
 
 const TabProjectInfo = (props: any) => {
   const classes = useStyles();
@@ -282,11 +283,6 @@ const TabProjectInfo = (props: any) => {
             />
           )}
           {isDeployed && (
-            <WithdrawRemainingToken
-              poolDetail={poolDetail}
-            />
-          )}
-          {/* {isDeployed && (
             <WithdrawRefundBalance
               poolDetail={poolDetail}
               setValue={setValue}
@@ -294,7 +290,12 @@ const TabProjectInfo = (props: any) => {
               control={control}
               watch={watch}
             />
-          )} */}
+          )}
+          {isDeployed && (
+            <WithdrawRemainingToken
+              poolDetail={poolDetail}
+            />
+          )}
         </Grid>
       </Grid>
 

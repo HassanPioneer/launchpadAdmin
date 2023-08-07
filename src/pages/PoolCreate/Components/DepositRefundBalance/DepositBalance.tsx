@@ -37,14 +37,14 @@ function DepositRefundBalance(props: any) {
                 <label className={classes.exchangeRateTitle}>Refund Tokens</label>
                 <br />
                 <br />
-              
-                <label className={classes.formControlLabel}>Refund Balance: {refundBalance} {acceptCurrency}</label>
+
+                <label className={classes.formControlLabel}>Refunding Amount: {refundBalance} {acceptCurrency}</label>
                 <br />
                 <label className={classes.formControlLabel}>Contract Balance: {contractBalance} {acceptCurrency}</label>
                 <br />
-                <label className={classes.formControlLabel}>Deposit balance: {depositBalance} {acceptCurrency}</label>
+                <label className={classes.formControlLabel}>Deposit Amount: {depositBalance} {acceptCurrency}</label>
                 <br />
-                <label className={classes.formControlLabel}>Total refund token: {totalRefundToken} {tokenSymbol}</label>
+                <label className={classes.formControlLabel}>Total Refunding Token: {totalRefundToken} {tokenSymbol}</label>
                 <br />
                 <br />
                 <DepositButton

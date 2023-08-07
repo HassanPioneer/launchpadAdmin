@@ -59,7 +59,7 @@ function DepositButton(props: any) {
         color="primary"
         onClick={buyRemainTokens}
         disabled={disabled || disableButton}
-      >Deposit Refund Balance</Button>
+      >Deposit Refunding Amount</Button>
 
       {loading &&
         (<div>Loading....</div>)

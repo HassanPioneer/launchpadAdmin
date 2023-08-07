@@ -62,7 +62,7 @@ function WithdrawRemainingToken(props: any) {
   };
 
   return (
-    <div style={{marginTop: 20}}>
+    <div style={{marginTop: 30}}>
       <Button
         variant="contained"
         color="primary"
