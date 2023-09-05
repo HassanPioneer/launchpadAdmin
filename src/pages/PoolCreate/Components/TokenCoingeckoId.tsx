@@ -13,7 +13,7 @@ function TokenCoingeckoId(props: any) {
     <>
       <div className={classes.formControl} style={{marginTop: 0}}>
         <label className={classes.formControlLabel}>
-          {`Coingecko ID (https://www.coingecko.com/en/coins/dexcheck => ID: dexcheck)`}
+          {`Coingecko ID (https://www.coingecko.com/en/coins/coin-name => Find "API id" field in the Info section`}
         </label>
         <input
           type="text"
