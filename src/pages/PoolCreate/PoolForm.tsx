@@ -122,6 +122,12 @@ function PoolForm(props: any) {
       market_maker_icon: data.market_maker_icon,
       banner: data.banner,
       description: data.description,
+      short_description: data.short_description,
+      roadmap: data.roadmap,
+      business_model: data.business_model,
+      team: data.team,
+      partners_investors: data.partners_investors,
+      token_metrics: data.token_metrics,
       address_receiver: data.addressReceiver,
 
       // Token
@@ -286,6 +292,12 @@ function PoolForm(props: any) {
       market_maker_icon: data.market_maker_icon,
       banner: data.banner,
       description: data.description,
+      short_description: data.short_description,
+      roadmap: data.roadmap,
+      business_model: data.business_model,
+      team: data.team,
+      partners_investors: data.partners_investors,
+      token_metrics: data.token_metrics,
 
       // USDT Price
       price_usdt: data.price_usdt, // Do not check isAcceptEth
@@ -471,6 +483,12 @@ function PoolForm(props: any) {
         market_maker_icon: data.market_maker_icon,
         banner: data.banner,
         description: data.description,
+        short_description: data.short_description,
+        roadmap: data.roadmap,
+        business_model: data.business_model,
+        team: data.team,
+        partners_investors: data.partners_investors,
+        token_metrics: data.token_metrics,
         address_receiver: data.addressReceiver,
 
         // Token
@@ -645,6 +663,8 @@ function PoolForm(props: any) {
   const watchBuyType = watch("buyType");
   const watchIsPrivate = watch("isPrivate");
   const isDeployed = !!poolDetail?.is_deploy;
+
+  console.log('errors', errors);
 
   return (
     <>

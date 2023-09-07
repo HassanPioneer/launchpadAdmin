@@ -351,6 +351,62 @@ const TabProjectInfo = (props: any) => {
               setValue={setValue}
               errors={errors}
               control={control}
+              header='Short description'
+              fieldName='short_description'
+            />
+            <PoolDescription
+              poolDetail={poolDetail}
+              register={register}
+              setValue={setValue}
+              errors={errors}
+              control={control}
+              header='Product'
+              fieldName='description'
+            />
+            <PoolDescription
+              poolDetail={poolDetail}
+              register={register}
+              setValue={setValue}
+              errors={errors}
+              control={control}
+              header='Roadmap'
+              fieldName='roadmap'
+            />
+            <PoolDescription
+              poolDetail={poolDetail}
+              register={register}
+              setValue={setValue}
+              errors={errors}
+              control={control}
+              header='Business model'
+              fieldName='business_model'
+            />
+            <PoolDescription
+              poolDetail={poolDetail}
+              register={register}
+              setValue={setValue}
+              errors={errors}
+              control={control}
+              header='Team'
+              fieldName='team'
+            />
+            <PoolDescription
+              poolDetail={poolDetail}
+              register={register}
+              setValue={setValue}
+              errors={errors}
+              control={control}
+              header='Partners and investors'
+              fieldName='partners_investors'
+            />
+            <PoolDescription
+              poolDetail={poolDetail}
+              register={register}
+              setValue={setValue}
+              errors={errors}
+              control={control}
+              header='Token metrics'
+              fieldName='token_metrics'
             />
           </div>
         </Grid>
