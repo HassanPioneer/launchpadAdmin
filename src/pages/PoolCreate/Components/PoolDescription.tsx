@@ -43,6 +43,7 @@ function PoolDescription(props: any) {
                 config={{
                   language: "en",
                   extraPlugins: "colorbutton",
+                  format_tags: "p;h1;h2;h3;h4;pre",
                   colorButton_colors:
                     "D01F36,5EFF8B,6788FF,FFD058,B073FF," +
                     "1ABC9C,2ECC71,3498DB,9B59B6,4E5F70,F1C40F," +
