@@ -35,6 +35,7 @@ import ProgressDisplaySetting from "../Components/ProgressDisplaySetting/Progres
 import DepositRefundBalance from "../Components/DepositRefundBalance/DepositBalance";
 import WithdrawRemainingToken from "../Components/WithdrawRemainingToken";
 import WithdrawRefundBalance from "../Components/WithdrawRefundBalance/WithdrawBalance";
+import ShortDescription from "../Components/ShortDescription";
 
 const TabProjectInfo = (props: any) => {
   const classes = useStyles();
@@ -345,14 +346,11 @@ const TabProjectInfo = (props: any) => {
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <div className={classes.exchangeRate}>
-            <PoolDescription
+            <ShortDescription
               poolDetail={poolDetail}
               register={register}
               setValue={setValue}
               errors={errors}
-              control={control}
-              header='Short description'
-              fieldName='short_description'
             />
             <PoolDescription
               poolDetail={poolDetail}
