@@ -35,6 +35,7 @@ import ProgressDisplaySetting from "../Components/ProgressDisplaySetting/Progres
 import DepositRefundBalance from "../Components/DepositRefundBalance/DepositBalance";
 import WithdrawRemainingToken from "../Components/WithdrawRemainingToken";
 import WithdrawRefundBalance from "../Components/WithdrawRefundBalance/WithdrawBalance";
+import ShortDescription from "../Components/ShortDescription";
 
 const TabProjectInfo = (props: any) => {
   const classes = useStyles();
@@ -345,12 +346,65 @@ const TabProjectInfo = (props: any) => {
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <div className={classes.exchangeRate}>
+            <ShortDescription
+              poolDetail={poolDetail}
+              register={register}
+              setValue={setValue}
+              errors={errors}
+            />
             <PoolDescription
               poolDetail={poolDetail}
               register={register}
               setValue={setValue}
               errors={errors}
               control={control}
+              header='Product'
+              fieldName='description'
+            />
+            <PoolDescription
+              poolDetail={poolDetail}
+              register={register}
+              setValue={setValue}
+              errors={errors}
+              control={control}
+              header='Roadmap'
+              fieldName='roadmap'
+            />
+            <PoolDescription
+              poolDetail={poolDetail}
+              register={register}
+              setValue={setValue}
+              errors={errors}
+              control={control}
+              header='Business model'
+              fieldName='business_model'
+            />
+            <PoolDescription
+              poolDetail={poolDetail}
+              register={register}
+              setValue={setValue}
+              errors={errors}
+              control={control}
+              header='Team'
+              fieldName='team'
+            />
+            <PoolDescription
+              poolDetail={poolDetail}
+              register={register}
+              setValue={setValue}
+              errors={errors}
+              control={control}
+              header='Partners and investors'
+              fieldName='partners_investors'
+            />
+            <PoolDescription
+              poolDetail={poolDetail}
+              register={register}
+              setValue={setValue}
+              errors={errors}
+              control={control}
+              header='Token metrics'
+              fieldName='token_metrics'
             />
           </div>
         </Grid>

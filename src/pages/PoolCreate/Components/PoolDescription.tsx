@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import useStyles from "../style";
 import { Controller } from "react-hook-form";
 import { CKEditor } from "ckeditor4-react";
-import {renderErrorCreatePool} from "../../../utils/validate";
+import { renderErrorCreatePool } from "../../../utils/validate";
 
 // CSS in /src/index.css
 
@@ -10,7 +10,7 @@ function PoolDescription(props: any) {
   const classes = useStyles();
   const {
     register, setValue, errors,
-    poolDetail, control
+    poolDetail, control, header, fieldName
   } = props;
   const renderError = renderErrorCreatePool;
 
@@ -18,9 +18,9 @@ function PoolDescription(props: any) {
   const [description, setDescription] = useState(defaultValue);
 
   useEffect(() => {
-    if (poolDetail && poolDetail.description) {
-      setValue('description', poolDetail.description);
-      setDescription(poolDetail.description);
+    if (poolDetail && poolDetail[fieldName]) {
+      setValue(fieldName, poolDetail[fieldName]);
+      setDescription(poolDetail[fieldName]);
     }
   }, [poolDetail]);
 
@@ -29,20 +29,21 @@ function PoolDescription(props: any) {
   return (
     <>
       <div className={classes.formCKEditor}>
-        <label className={classes.formControlLabel}>About the pool: </label>
+        <label className={classes.formControlLabel}>{header}</label>
         <Controller
           control={control}
           rules={{
             required: false,
           }}
-          name="description"
+          name={fieldName}
           render={(field) => {
             return (
               <CKEditor
-                key={poolDetail?.description}
+                key={poolDetail?.[fieldName]}
                 config={{
                   language: "en",
                   extraPlugins: "colorbutton",
+                  format_tags: "p;h1;h2;h3;h4;pre",
                   colorButton_colors:
                     "D01F36,5EFF8B,6788FF,FFD058,B073FF," +
                     "1ABC9C,2ECC71,3498DB,9B59B6,4E5F70,F1C40F," +
@@ -50,9 +51,9 @@ function PoolDescription(props: any) {
                     "E67E22,E74C3C,ECF0F1,95A5A6,DDD,FFF," +
                     "D35400,C0392B,BDC3C7,7F8C8D,999,000",
                 }}
-                name="description"
+                name={fieldName}
                 ref={register({})}
-                initData={poolDetail?.description}
+                initData={poolDetail?.[fieldName]}
                 onReady={(editor: any) => {
                   // You can store the "editor" and use when it is needed.
                   // console.log( 'Editor is ready to use!', editor );
@@ -69,7 +70,7 @@ function PoolDescription(props: any) {
 
         <p className={classes.formErrorMessage}>
           {
-            renderError(errors, 'description')
+            renderError(errors, fieldName)
           }
         </p>
 
