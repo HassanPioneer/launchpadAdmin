@@ -100,7 +100,7 @@ export const login = (password: string, isInvestor: boolean = false) => {
             wallet_address: ethAddress,
           }, isInvestor) as any;
 
-          const resObj = await response.json();
+          const resObj = await response?.json();
 
           if (resObj.status && resObj.status === 200 && resObj.data) {
             const { token, user } = resObj.data;
