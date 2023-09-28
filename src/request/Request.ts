@@ -46,7 +46,7 @@ export class BaseRequest {
       .then(response => {
         resObj = response.clone();
         return response.json();
-      })
+      }).catch(err =>console.log(err))
       .then(data => {
         if (data.status && data.status === 401) {
           if (data.message === 'Token Expired') {
@@ -55,10 +55,15 @@ export class BaseRequest {
         }
 
         return resObj;
-      });
-    } catch (e) {
+      }).catch(err =>console.log(err))
+    } 
+    
+    
+    catch (e) {
       throw e;
     }
+
+    
   }
 
   async postImage(url: string, data: FormData ) {
@@ -111,14 +116,14 @@ export class BaseRequest {
       .then(response => {
         resObj = response.clone();
         return response.json();
-      })
+      }).catch(err =>console.log(err))
       .then(data => {
         if (data.status && data.status === 401 && data.message === 'Token Expired') {
           configureStore().store.dispatch(logout(isInvestor));
         }
 
         return resObj;
-      });
+      }).catch(err =>console.log(err))
     } catch (e) {
       throw e;
     }
