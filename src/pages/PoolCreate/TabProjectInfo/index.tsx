@@ -36,6 +36,7 @@ import DepositRefundBalance from "../Components/DepositRefundBalance/DepositBala
 import WithdrawRemainingToken from "../Components/WithdrawRemainingToken";
 import WithdrawRefundBalance from "../Components/WithdrawRefundBalance/WithdrawBalance";
 import ShortDescription from "../Components/ShortDescription";
+import React from 'react';
 
 const TabProjectInfo = (props: any) => {
   const classes = useStyles();

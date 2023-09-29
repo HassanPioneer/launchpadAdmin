@@ -5,6 +5,7 @@ import { getContractInstance } from "../../../../services/web3";
 import useStyles from "../../style";
 import useGetRefundBalance from "../hooks/useGetRefundBalance";
 import WithdrawButton from "./WithdrawButton";
+import React from 'react';
 
 function WithdrawRefundBalance(props: any) {
   const classes = useStyles();
