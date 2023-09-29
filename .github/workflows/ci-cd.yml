@@ -1,7 +1,9 @@
-name: CI/CD Vercel Preview
+name: CI/CD Vercel
 
 env:
-  CI: false
+  CI: false #TODO MM: Remove when dependencies are fixed
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 on:
   pull_request:
