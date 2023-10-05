@@ -5,6 +5,7 @@ import { POOL_TYPE } from "../../../../constants";
 import { getPoolContract } from "../../../../services/web3";
 import { alertFailure, alertSuccess } from "../../../../store/actions/alert";
 import useStyles from "../../style";
+import React from 'react';
 
 function WithdrawButton(props: any) {
   const classes = useStyles();

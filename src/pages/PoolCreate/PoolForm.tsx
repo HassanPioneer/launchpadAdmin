@@ -38,12 +38,20 @@ function PoolForm(props: any) {
   const [needValidate, setNeedValidate] = useState(false);
   const [activeTab, setActiveTab] = useState<number>(ACTIVE_TABS.PROJECT_INFO);
 
-  const { register, setValue, getValues, clearErrors, errors, handleSubmit, control, watch } =
-    useForm({
-      mode: "onChange",
-      defaultValues: poolDetail,
-      reValidateMode: "onChange",
-    });
+  const {
+    register,
+    setValue,
+    getValues,
+    clearErrors,
+    errors,
+    handleSubmit,
+    control,
+    watch,
+  } = useForm({
+    mode: "onChange",
+    defaultValues: poolDetail,
+    reValidateMode: "onChange",
+  });
 
   const tokenAddress = watch("token");
   const tokenRate = watch("tokenRate");
@@ -68,31 +76,43 @@ function PoolForm(props: any) {
     const minTier = data.minTier;
     let tierConfiguration = data.tierConfiguration || "[]";
     tierConfiguration = JSON.parse(tierConfiguration);
-    tierConfiguration = tierConfiguration.map((currency: any, index: number) => {
-      const item = {
-        ...currency,
-        currency: data.acceptCurrency,
-      };
-      if (index < minTier) {
-        item.maxBuy = 0;
-        item.minBuy = 0;
-      }
+    tierConfiguration = tierConfiguration.map(
+      (currency: any, index: number) => {
+        const item = {
+          ...currency,
+          currency: data.acceptCurrency,
+        };
+        if (index < minTier) {
+          item.maxBuy = 0;
+          item.minBuy = 0;
+        }
 
-      item.startTime = item.startTime ? moment(item.startTime).unix() || null : null;
-      item.endTime = item.endTime ? moment(item.endTime).unix() || null : null;
-      return item;
-    });
+        item.startTime = item.startTime
+          ? moment(item.startTime).unix() || null
+          : null;
+        item.endTime = item.endTime
+          ? moment(item.endTime).unix() || null
+          : null;
+        return item;
+      }
+    );
 
     tierConfiguration = uniqBy(tierConfiguration, "name");
 
     // Format Claim Config
     let campaignClaimConfig = data.campaignClaimConfig || "[]";
     campaignClaimConfig = JSON.parse(campaignClaimConfig);
-    campaignClaimConfig = campaignClaimConfig.map((item: any, index: number) => {
-      item.startTime = item.startTime ? moment(item.startTime).unix() || null : null;
-      item.endTime = item.endTime ? moment(item.endTime).unix() || null : null;
-      return item;
-    });
+    campaignClaimConfig = campaignClaimConfig.map(
+      (item: any, index: number) => {
+        item.startTime = item.startTime
+          ? moment(item.startTime).unix() || null
+          : null;
+        item.endTime = item.endTime
+          ? moment(item.endTime).unix() || null
+          : null;
+        return item;
+      }
+    );
 
     let tokenInfo: any = {
       symbol: data?.token_symbol,
@@ -129,6 +149,7 @@ function PoolForm(props: any) {
       partners_investors: data.partners_investors,
       token_metrics: data.token_metrics,
       address_receiver: data.addressReceiver,
+      ath_price: data.athPrice,
 
       // Token
       token: data.token,
@@ -149,13 +170,19 @@ function PoolForm(props: any) {
       start_time: data.start_time ? data.start_time.unix() : null,
       finish_time: data.finish_time ? data.finish_time.unix() : null,
       release_time: data.release_time ? data.release_time.unix() : null,
-      start_join_pool_time: data.start_join_pool_time ? data.start_join_pool_time.unix() : null,
-      end_join_pool_time: data.end_join_pool_time ? data.end_join_pool_time.unix() : null,
+      start_join_pool_time: data.start_join_pool_time
+        ? data.start_join_pool_time.unix()
+        : null,
+      end_join_pool_time: data.end_join_pool_time
+        ? data.end_join_pool_time.unix()
+        : null,
       pre_order_min_tier: data.pre_order_min_tier,
       listing_time: listing_time,
       start_refund_time: listing_time,
       end_refund_time: data.end_refund_time?.unix(),
-      start_pre_order_time: data.start_pre_order_time ? data.start_pre_order_time.unix() : null,
+      start_pre_order_time: data.start_pre_order_time
+        ? data.start_pre_order_time.unix()
+        : null,
 
       // Types
       accept_currency: data.acceptCurrency,
@@ -196,7 +223,9 @@ function PoolForm(props: any) {
       // Forbidden Countries Setting
       forbidden_countries: data.forbidden_countries,
 
-      announcement_time: data.announcement_time ? data.announcement_time.unix() : null,
+      announcement_time: data.announcement_time
+        ? data.announcement_time.unix()
+        : null,
 
       // Progress Display Setting
       token_sold_display: data.token_sold_display,
@@ -224,7 +253,9 @@ function PoolForm(props: any) {
 
       // Free Time Settings
       freeBuyTimeSetting: {
-        start_time_free_buy: data.start_time_free_buy ? data.start_time_free_buy.unix() : null,
+        start_time_free_buy: data.start_time_free_buy
+          ? data.start_time_free_buy.unix()
+          : null,
         max_bonus_free_buy: data.max_bonus_free_buy,
       },
     };
@@ -339,7 +370,9 @@ function PoolForm(props: any) {
       // Forbidden Countries Setting
       forbidden_countries: data.forbidden_countries,
 
-      announcement_time: data.announcement_time ? data.announcement_time.unix() : null,
+      announcement_time: data.announcement_time
+        ? data.announcement_time.unix()
+        : null,
 
       // Progress Display Setting
       token_sold_display: data.token_sold_display,
@@ -368,7 +401,9 @@ function PoolForm(props: any) {
 
       // Free Time Settings
       freeBuyTimeSetting: {
-        start_time_free_buy: data.start_time_free_buy ? data.start_time_free_buy.unix() : null,
+        start_time_free_buy: data.start_time_free_buy
+          ? data.start_time_free_buy.unix()
+          : null,
         max_bonus_free_buy: data.max_bonus_free_buy,
       },
     };
@@ -438,7 +473,8 @@ function PoolForm(props: any) {
     if (
       // eslint-disable-next-line no-restricted-globals
       !confirm(
-        "The system will store the latest pool information.\n" + "Are you sure you want to deploy?"
+        "The system will store the latest pool information.\n" +
+          "Are you sure you want to deploy?"
       )
     ) {
       setNeedValidate(false);
@@ -455,17 +491,19 @@ function PoolForm(props: any) {
       const minTier = data.minTier;
       let tierConfiguration = data.tierConfiguration || "[]";
       tierConfiguration = JSON.parse(tierConfiguration);
-      tierConfiguration = tierConfiguration.map((currency: any, index: number) => {
-        const item = {
-          ...currency,
-          currency: data.acceptCurrency,
-        };
-        if (index < minTier) {
-          item.maxBuy = 0;
-          item.minBuy = 0;
+      tierConfiguration = tierConfiguration.map(
+        (currency: any, index: number) => {
+          const item = {
+            ...currency,
+            currency: data.acceptCurrency,
+          };
+          if (index < minTier) {
+            item.maxBuy = 0;
+            item.minBuy = 0;
+          }
+          return item;
         }
-        return item;
-      });
+      );
 
       tierConfiguration = uniqBy(tierConfiguration, "name");
 
@@ -512,13 +550,19 @@ function PoolForm(props: any) {
         start_time: data.start_time ? data.start_time.unix() : null,
         finish_time: data.finish_time ? data.finish_time.unix() : null,
         release_time: data.release_time ? data.release_time.unix() : null,
-        start_join_pool_time: data.start_join_pool_time ? data.start_join_pool_time.unix() : null,
-        end_join_pool_time: data.end_join_pool_time ? data.end_join_pool_time.unix() : null,
+        start_join_pool_time: data.start_join_pool_time
+          ? data.start_join_pool_time.unix()
+          : null,
+        end_join_pool_time: data.end_join_pool_time
+          ? data.end_join_pool_time.unix()
+          : null,
         pre_order_min_tier: data.pre_order_min_tier,
         listing_time: listing_time,
         start_refund_time: listing_time,
         end_refund_time: data.end_refund_time?.unix(),
-        start_pre_order_time: data.start_pre_order_time ? data.start_pre_order_time.unix() : null,
+        start_pre_order_time: data.start_pre_order_time
+          ? data.start_pre_order_time.unix()
+          : null,
 
         // Types
         accept_currency: data.acceptCurrency,
@@ -563,12 +607,18 @@ function PoolForm(props: any) {
 
         // Free Time Settings
         freeBuyTimeSetting: {
-          start_time_free_buy: data.start_time_free_buy ? data.start_time_free_buy.unix() : null,
+          start_time_free_buy: data.start_time_free_buy
+            ? data.start_time_free_buy.unix()
+            : null,
           max_bonus_free_buy: data.max_bonus_free_buy,
         },
       };
 
-      console.log("[handleDeloySubmit] - Submit with data: ", submitData, poolDetail);
+      console.log(
+        "[handleDeloySubmit] - Submit with data: ",
+        submitData,
+        poolDetail
+      );
 
       await dispatch(deployPool(submitData, history));
       setLoadingDeploy(false);
@@ -593,7 +643,8 @@ function PoolForm(props: any) {
     if (
       // eslint-disable-next-line no-restricted-globals
       !confirm(
-        "The system will store the latest pool information.\n" + "Are you sure you want to deploy?"
+        "The system will store the latest pool information.\n" +
+          "Are you sure you want to deploy?"
       )
     ) {
       setNeedValidate(false);
@@ -613,7 +664,9 @@ function PoolForm(props: any) {
 
         start_time: data.start_time ? data.start_time.unix() : null,
         finish_time: data.finish_time ? data.finish_time.unix() : null,
-        start_pre_order_time: data.start_pre_order_time ? data.start_pre_order_time.unix() : null,
+        start_pre_order_time: data.start_pre_order_time
+          ? data.start_pre_order_time.unix()
+          : null,
 
         // Token
         token: tokenAddress,
@@ -636,7 +689,11 @@ function PoolForm(props: any) {
         wallet: isEdit ? poolDetail?.wallet : {},
       };
 
-      console.log("[handleDeloyClaimPoolSubmit] - Submit with data: ", submitData, poolDetail);
+      console.log(
+        "[handleDeloyClaimPoolSubmit] - Submit with data: ",
+        submitData,
+        poolDetail
+      );
 
       await dispatch(deployClaimPool(submitData, history));
       setLoadingDeploy(false);
@@ -664,7 +721,7 @@ function PoolForm(props: any) {
   const watchIsPrivate = watch("isPrivate");
   const isDeployed = !!poolDetail?.is_deploy;
 
-  console.log('errors', errors);
+  console.log("errors", errors);
 
   return (
     <>
@@ -679,7 +736,9 @@ function PoolForm(props: any) {
             </li>
             <li
               onClick={() => setActiveTab(ACTIVE_TABS.TIME_SETTINGS)}
-              className={activeTab === ACTIVE_TABS.TIME_SETTINGS ? "active" : ""}
+              className={
+                activeTab === ACTIVE_TABS.TIME_SETTINGS ? "active" : ""
+              }
             >
               TIME SETTINGS
             </li>
