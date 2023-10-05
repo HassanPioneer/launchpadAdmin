@@ -37,6 +37,7 @@ import WithdrawRemainingToken from "../Components/WithdrawRemainingToken";
 import WithdrawRefundBalance from "../Components/WithdrawRefundBalance/WithdrawBalance";
 import ShortDescription from "../Components/ShortDescription";
 import React from 'react';
+import ATHPrice from "../Components/ATHPrice";
 
 const TabProjectInfo = (props: any) => {
   const classes = useStyles();
@@ -152,6 +153,12 @@ const TabProjectInfo = (props: any) => {
             setValue={setValue}
             errors={errors}
           />
+          <ATHPrice
+            poolDetail={poolDetail}
+            register={register}
+            setValue={setValue}
+            errors={errors}
+          />
 
           {!!poolDetail?.is_deploy && (
             <ProgressDisplaySetting
@@ -163,7 +170,11 @@ const TabProjectInfo = (props: any) => {
           )}
         </Grid>
         <Grid item xs={6} className={classes.exchangeRate}>
-          <PoolHash poolDetail={poolDetail} duoNetworkPool={duoNetworkPool} watch={watch} />
+          <PoolHash
+            poolDetail={poolDetail}
+            duoNetworkPool={duoNetworkPool}
+            watch={watch}
+          />
           {duoNetworkPool && (
             <PoolClaimHash
               poolDetail={poolDetail}
@@ -293,11 +304,7 @@ const TabProjectInfo = (props: any) => {
               watch={watch}
             />
           )}
-          {isDeployed && (
-            <WithdrawRemainingToken
-              poolDetail={poolDetail}
-            />
-          )}
+          {isDeployed && <WithdrawRemainingToken poolDetail={poolDetail} />}
         </Grid>
       </Grid>
 
@@ -359,8 +366,8 @@ const TabProjectInfo = (props: any) => {
               setValue={setValue}
               errors={errors}
               control={control}
-              header='Product'
-              fieldName='description'
+              header="Product"
+              fieldName="description"
             />
             <PoolDescription
               poolDetail={poolDetail}
@@ -368,8 +375,8 @@ const TabProjectInfo = (props: any) => {
               setValue={setValue}
               errors={errors}
               control={control}
-              header='Roadmap'
-              fieldName='roadmap'
+              header="Roadmap"
+              fieldName="roadmap"
             />
             <PoolDescription
               poolDetail={poolDetail}
@@ -377,8 +384,8 @@ const TabProjectInfo = (props: any) => {
               setValue={setValue}
               errors={errors}
               control={control}
-              header='Business model'
-              fieldName='business_model'
+              header="Business model"
+              fieldName="business_model"
             />
             <PoolDescription
               poolDetail={poolDetail}
@@ -386,8 +393,8 @@ const TabProjectInfo = (props: any) => {
               setValue={setValue}
               errors={errors}
               control={control}
-              header='Team'
-              fieldName='team'
+              header="Team"
+              fieldName="team"
             />
             <PoolDescription
               poolDetail={poolDetail}
@@ -395,8 +402,8 @@ const TabProjectInfo = (props: any) => {
               setValue={setValue}
               errors={errors}
               control={control}
-              header='Partners and investors'
-              fieldName='partners_investors'
+              header="Partners and investors"
+              fieldName="partners_investors"
             />
             <PoolDescription
               poolDetail={poolDetail}
@@ -404,8 +411,8 @@ const TabProjectInfo = (props: any) => {
               setValue={setValue}
               errors={errors}
               control={control}
-              header='Token metrics'
-              fieldName='token_metrics'
+              header="Token metrics"
+              fieldName="token_metrics"
             />
           </div>
         </Grid>
