@@ -25,7 +25,7 @@ jobs:
         with:
           node-version: 16.x
           cache: yarn
-          cache-dependency-path: ./yarn.lock
+          cache-dependency-path: '**/yarn.lock'
 
       - name: Install yarn
         run: npm install -g yarn
@@ -47,7 +47,7 @@ jobs:
         with:
           node-version: 16.x
           cache: yarn
-          cache-dependency-path: '**/package.json.lock'
+          cache-dependency-path: '**/yarn.lock'
 
       - name: Install packages
         # if: steps.yarn-cache.outputs.cache-hit != 'true'
