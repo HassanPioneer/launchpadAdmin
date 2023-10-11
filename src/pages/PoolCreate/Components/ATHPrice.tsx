@@ -34,7 +34,7 @@ function ATHPrice(props: any) {
           className={`${classes.formInputBox}`}
           // disabled={isDeployed}
         />    
-        <input
+        <input     
           type="hidden"
           name="athPrice"
           value={athPrice || ""}
