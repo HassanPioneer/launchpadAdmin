@@ -33,7 +33,7 @@ function ATHPrice(props: any) {
           onValueChange={handleChange}
           className={`${classes.formInputBox}`}
           // disabled={isDeployed}
-        />    
+        />        
         <input     
           type="hidden"
           name="athPrice"
